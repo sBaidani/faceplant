@@ -25,13 +25,16 @@
 <!-- Will populate list with response content -->
 </ul>
 
+<p id="testPara"></p>
+
 <body>
 
 <script type="text/javascript">
+    var links = ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
+                    "http://www.poleznoe.ru/large/201203/7946.jpg"]
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
             //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
@@ -46,7 +49,7 @@
             },
             type: "POST",
             // Request body
-            data: '{"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"}',
+            data: '{"url": "' + links[0] + '"}',
         }).done(function(data) {
             // Get face rectangle dimensions
             var faceRectangle = data[0].faceRectangle;
@@ -73,7 +76,6 @@
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
             //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
@@ -88,7 +90,7 @@
             },
             type: "POST",
             // Request body
-            data: '{"url": "http://www.poleznoe.ru/large/201203/7946.jpg"}',
+            data: '{"url": "' + links[1] + '"}',
         }).done(function(data) {
             // Get face rectangle dimensions
             var faceRectangle = data[0].faceRectangle;
@@ -102,6 +104,9 @@
             // Get emotion confidence scores
             var scores = data[0].scores;
             var scoresList = $('#scores2');
+            console.log(scores);
+            console.log(data);
+            
 
             // Append to DOM
             for(var prop in scores) {
