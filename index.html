@@ -91,8 +91,8 @@
             data: '{"url": "http://www.poleznoe.ru/large/201203/7946.jpg"}',
         }).done(function(data) {
             // Get face rectangle dimensions
-            var faceRectangle2 = data[0].faceRectangle;
-            var faceRectangleList2 = $('#faceRectangle2');
+            var faceRectangle = data[0].faceRectangle;
+            var faceRectangleList = $('#faceRectangle2');
 
             // Append to DOM
             for (var prop in faceRectangle) {
