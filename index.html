@@ -3,6 +3,7 @@
 <head>
     <title>JSSample</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
+    <script src="emotion.js"></script>
 </head>
 
 <h2>Face Rectangle</h2>
@@ -32,10 +33,7 @@
 <script type="text/javascript">
     var links = ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
                     "http://www.poleznoe.ru/large/201203/7946.jpg"]
-var scores1;
-var scoresList1;
-var scores2;
-var scoresList2;
+var externalScores = new Array();
     $(function() {
         // No query string parameters for this API call.
         var params = { };
@@ -62,11 +60,13 @@ var scoresList2;
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
             // Get emotion confidence scores
-            scores1 = data[0].scores;
-            var scoresList1 = $('#scores');
+            var scores = data[0].scores;
+            externalScores[0] = scores;
+            console.log(externalScores);
+            var scoresList = $('#scores');
             // Append to DOM
-            for(var prop in scores1) {
-                scoresList1.append("<li> " + prop + ": " + scores1[prop] + "</li>")
+            for(var prop in scores) {
+                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
             }
 
         }).fail(function(err) {
@@ -99,16 +99,18 @@ var scoresList2;
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
             // Get emotion confidence scores
-            var scores2 = data[0].scores;
-            var scoresList2 = $('#scores2');
+            var scores = data[0].scores;
+            externalScores[1] = scores;
+            var scoresList = $('#scores2');
             // Append to DOM
             for(var prop in scores2) {
-                scoresList2.append("<li> " + prop + ": " + scores2[prop] + "</li>")
+                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
             }
 
         }).fail(function(err) {
             alert("Error: " + JSON.stringify(err));
         });
+        console.log(externalScores);
     });
 </script>
 </body>
