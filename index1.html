@@ -26,29 +26,7 @@
   	     <div class="left-block">
             <!--this div allows you to chose or drag and drop an image-->
   		      <div class = "ddd"> Select and upload image &nbsp &nbsp<button onclick="document.querySelector('input').click()">Upload</button></div>
-            /*<input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">*/
-             
-              <input type="file" onchange="previewFile()"><br>
-              <img src="" height="200" alt="Image preview...">
-              <script>
-                function previewFile(){
-                   var preview = document.querySelector('img'); //selects the query named img
-                   var file    = document.querySelector('input[type=file]').files[0]; //sames as here
-                   var reader  = new FileReader();
-
-                   reader.onloadend = function () {
-                   preview.src = reader.result;
-                   }
-
-                   if (file) {
-                   reader.readAsDataURL(file); //reads the data as a URL
-                   } else {
-                   preview.src = "";
-                   }
-              }
-
-  previewFile();  //calls the function named previewFile()
-  </script>
+            <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
               
             <!--this div allows you to take a selfie-->
   		      <div class ="camera">
@@ -71,7 +49,80 @@
                <ul id="scores2">
 <!-- Will populate list with response content -->
                </ul>
-    
+            <script type="text/javascript">
+    $(function() {
+        // No query string parameters for this API call.
+        var params = { };
+        $.ajax({
+            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
+            //   URL below with "westcentralus".
+            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers, also supports "application/octet-stream"
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
+            },
+            type: "POST",
+            // Request body
+            data: '{"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"}',
+        }).done(function(data) {
+            // Get face rectangle dimensions
+            var faceRectangle = data[0].faceRectangle;
+            var faceRectangleList = $('#faceRectangle');
+            // Append to DOM
+            for (var prop in faceRectangle) {
+                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
+            }
+            // Get emotion confidence scores
+            var scores = data[0].scores;
+            var scoresList = $('#scores');
+            // Append to DOM
+            for(var prop in scores) {
+                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
+            }
+        }).fail(function(err) {
+            alert("Error: " + JSON.stringify(err));
+        });
+    });
+    $(function() {
+        // No query string parameters for this API call.
+        var params = { };
+        $.ajax({
+            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
+            //   URL below with "westcentralus".
+            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers, also supports "application/octet-stream"
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
+            },
+            type: "POST",
+            // Request body
+            data: '{"url": "http://www.poleznoe.ru/large/201203/7946.jpg"}',
+        }).done(function(data) {
+            // Get face rectangle dimensions
+            var faceRectangle = data[0].faceRectangle;
+            var faceRectangleList = $('#faceRectangle2');
+            // Append to DOM
+            for (var prop in faceRectangle) {
+                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
+            }
+            // Get emotion confidence scores
+            var scores = data[0].scores;
+            var scoresList = $('#scores2');
+            // Append to DOM
+            for(var prop in scores) {
+                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
+            }
+        }).fail(function(err) {
+            alert("Error: " + JSON.stringify(err));
+        });
+    });
+</script>
 
   			    <p> or take a selfie</p>
   		      </div>
@@ -85,7 +136,7 @@
   		      </div>
 <!--the following div contains a button-->
   		      <div class ="button-block">
-  			     <b><p><button class="button"><span>plant</span></button></a></p></b>
+  			     <b><p><button class="button"><span>plant</span></button></p></b>
              </p>
   		      </div>
   	     </div>
