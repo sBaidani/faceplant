@@ -33,7 +33,7 @@
 <script type="text/javascript">
     var links = ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
                     "http://www.poleznoe.ru/large/201203/7946.jpg"]
-var externalScores = new Array();
+var externalScores = new Array(2,8);
     $(function() {
         // No query string parameters for this API call.
         var params = { };
@@ -103,14 +103,16 @@ var externalScores = new Array();
             externalScores[1] = scores;
             var scoresList = $('#scores2');
             // Append to DOM
-            for(var prop in scores2) {
+            for(var prop in scores) {
                 scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
             }
+            console.log(compareImages(externalScores[0], externalScores[1]));
+            // console.log(compareImages(externalScores[0], externalScores[1]));
 
         }).fail(function(err) {
             alert("Error: " + JSON.stringify(err));
-        });
-        console.log(externalScores);
+        }
+    );
     });
 </script>
 </body>
