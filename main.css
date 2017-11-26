@@ -1,7 +1,8 @@
 /*this is main.css*/
 body{
 	background-color: #dfe3ee;	
-	font-family: Tahoma;	
+	font-family: Tahoma;
+	margin: 0;	
 
 }
 h1{
@@ -11,7 +12,7 @@ h1{
 	margin-left: 40pt;
 }
 
-.header {
+.header{
   height:30pt;
   width: 100%;
   margin-top:none;
@@ -31,15 +32,23 @@ h1{
 */
 h2{
 	color: #000;
+	margin-left: 40pt;
 }
 img {
     width: 30%;
     height: auto;
 
 }
+
+p.description{
+  
+  margin-left: 40pt;
+}
+
 form{
 	background-color: none;
 	text-align: center;
+	margin-left: 40pt;
 
 }
 
@@ -63,7 +72,7 @@ div.ddd{
 	background-color: #a8a8a8;
 }
 div.camera{
-	background-color: white;	
+	background-color: none;	
 
 }
 
@@ -72,18 +81,17 @@ div.camera{
 
 div.right-block{
    background-color: none;
-   float:left;
-   padding: 0 300px 0 0;
-   padding-right: 0;
-   
+   float:right;
+   padding: 0;
+
 
 }
 
 div.preview{
-	background-color: #FFFFFF;
+	background-color: none;
 }
 div.button-block{
-	background-color: #FFFFFF;
+	background-color: none;
 
 }
  /* Hover Buttun*/
