@@ -14,11 +14,11 @@
 <body>
     <div class="header"><h1>faceplant</h1></div>
 <!--the following form tag contains logo and paragraph-->
-  	    <div class="logo" id ="content">
-           <p align="center"><img src="logo-faceplant.jpg"></p>
-  		     <h2 align ="justify" >Scan me like one of your french girls</h2>
-  		   <p align="justify"> this site does bla bla bla  </p>
-  		</div>
+  	   <div class="logo" id ="content">
+          <p align="center"><img src="logo-faceplant.jpg"></p>
+  		  <h2 align ="justify" >Scan me like one of your french girls</h2>
+  		    <p class="description" align="justify"> On this site you will be able to use the new Cognitive   </p>
+  		 </div>
 <!--the following form tag contains two blocks: left block and right block-->
       <form align="center" class="content">
 <!--left block contains 2 divs-->
@@ -26,29 +26,28 @@
             <!--this div allows you to chose or drag and drop an image-->
   		      <div class = "ddd"> Select and upload image &nbsp &nbsp<button onclick="document.querySelector('input').click()">Upload</button></div>
             <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
-            
-      
+              
             <!--this div allows you to take a selfie-->
   		      <div class ="camera">
               <h2>Face Rectangle</h2>
-              <ul id="faceRectangle">
+               <ul id="faceRectangle">
 <!-- Will populate list with response content -->
-              </ul>
+               </ul>
 
               <h2>Emotions</h2>
-              <ul id="scores">
+               <ul id="scores">
 <!-- Will populate list with response content -->
-              </ul>
+               </ul>
 
               <h2>Face Rectangle 2</h2>
-              <ul id="faceRectangle2">
+               <ul id="faceRectangle2">
 <!-- Will populate list with response content -->
-              </ul>
+               </ul>
 
               <h2>Emotions 2</h2>
-              <ul id="scores2">
+               <ul id="scores2">
 <!-- Will populate list with response content -->
-              </ul>
+               </ul>
             <script type="text/javascript">
     $(function() {
         // No query string parameters for this API call.
@@ -132,12 +131,12 @@
   	     <div class = "right-block">
 <!--the following div contains a preview of your picture-->
   		      <div class ="preview">
-  				  <p><img src="example.jpg"></p>
+  				   <p><img src="example.jpg"></p>
   		      </div>
 <!--the following div contains a button-->
   		      <div class ="button-block">
-  			    <b><p><button class="button"><span>plant</span></button></a></p></b>
-            </p>
+  			     <b><p><button class="button"><span>plant</span></button></a></p></b>
+             </p>
   		      </div>
   	     </div>
       </form>
