@@ -1,2 +1,3 @@
 # faceplant
-Website that scans an image for a face and depending on the emotion detected, places that face on a famous portrait
+Website that scans an image for a face and depending on the emotion detected, places that face on a famous ...
+Well, we hoped to do that
