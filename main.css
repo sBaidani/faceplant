@@ -1,4 +1,4 @@
-/*this is main.css written by csi21*/
+/*this is main.css*/
 body{
 	background-color: #dfe3ee;	
 	font-family: Tahoma;	
@@ -46,7 +46,7 @@ form{
 /*Left Block*/
 
 div.left-block{
-	background-color: white;
+	background-color: none;
 	float: left;
 	padding: 0 100px 0 0;
 	padding-right: 0;
@@ -59,18 +59,15 @@ input{
 }
 
 /*upload and drag an image*/
-
-div.box{
-	background-color: blue;	
+div.ddd{
+	background-color: white;
+}
+div.camera{
+	background-color: white;	
 
 }
 
-/*Take a selfie!*/
-div.embedded-camera{
-	background-color: #FF7F50;
-
-}
-
+/*or Take a selfie!*/
 /*Right Block*/
 
 div.right-block{
