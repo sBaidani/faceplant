@@ -60,7 +60,7 @@ input{
 
 /*upload and drag an image*/
 div.ddd{
-	background-color: white;
+	background-color: #a8a8a8;
 }
 div.camera{
 	background-color: white;	
@@ -75,6 +75,7 @@ div.right-block{
    float:left;
    padding: 0 300px 0 0;
    padding-right: 0;
+   
 
 }
 
