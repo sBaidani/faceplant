@@ -1,0 +1,143 @@
+<!--written by csi21-->
+<!DOCTYPE html>
+<html>
+    <head>
+        <title>Faceplant</title>
+        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--link to main.css-->
+        <link rel="stylesheet" type="text/css" href="main.css">
+        <script type="text/javascript" src="faceplant.js"></script>
+    </head>
+</html> 
+<body>
+  <div class="header">faceplant</div>
+<!--the following form tag contains logo and paragraph-->
+  	   <div class="logo" id ="content">
+          <p align="center"><img src="logo-faceplant.jpg"></p>
+  		    <h2 align ="justify" >Scan me like one of your french girls</h2>
+  		    <p align="justify"> this site does bla bla bla  </p>
+  		</div>
+<!--the following form tag contains two blocks: left block and right block-->
+      <form align="center">
+<!--left block contains 2 divs-->
+  	     <div class="left-block">
+<!--this div allows you to chose or drag and drop an image-->
+  		      <div>
+            <input type="file" id="myFile">  
+            </div>
+      
+<!--this div allows you to take a selfie-->
+  		      <div class ="camera">
+              <h2>Face Rectangle</h2>
+              <ul id="faceRectangle">
+<!-- Will populate list with response content -->
+              </ul>
+
+              <h2>Emotions</h2>
+              <ul id="scores">
+<!-- Will populate list with response content -->
+              </ul>
+
+              <h2>Face Rectangle 2</h2>
+              <ul id="faceRectangle2">
+<!-- Will populate list with response content -->
+              </ul>
+
+              <h2>Emotions 2</h2>
+              <ul id="scores2">
+<!-- Will populate list with response content -->
+              </ul>
+            <script type="text/javascript">
+    $(function() {
+        // No query string parameters for this API call.
+        var params = { };
+        $.ajax({
+            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
+            //   URL below with "westcentralus".
+            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers, also supports "application/octet-stream"
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
+            },
+            type: "POST",
+            // Request body
+            data: '{"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"}',
+        }).done(function(data) {
+            // Get face rectangle dimensions
+            var faceRectangle = data[0].faceRectangle;
+            var faceRectangleList = $('#faceRectangle');
+            // Append to DOM
+            for (var prop in faceRectangle) {
+                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
+            }
+            // Get emotion confidence scores
+            var scores = data[0].scores;
+            var scoresList = $('#scores');
+            // Append to DOM
+            for(var prop in scores) {
+                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
+            }
+        }).fail(function(err) {
+            alert("Error: " + JSON.stringify(err));
+        });
+    });
+    $(function() {
+        // No query string parameters for this API call.
+        var params = { };
+        $.ajax({
+            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
+            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
+            //   URL below with "westcentralus".
+            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
+            beforeSend: function(xhrObj){
+                // Request headers, also supports "application/octet-stream"
+                xhrObj.setRequestHeader("Content-Type","application/json");
+                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
+            },
+            type: "POST",
+            // Request body
+            data: '{"url": "http://www.poleznoe.ru/large/201203/7946.jpg"}',
+        }).done(function(data) {
+            // Get face rectangle dimensions
+            var faceRectangle = data[0].faceRectangle;
+            var faceRectangleList = $('#faceRectangle2');
+            // Append to DOM
+            for (var prop in faceRectangle) {
+                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
+            }
+            // Get emotion confidence scores
+            var scores = data[0].scores;
+            var scoresList = $('#scores2');
+            // Append to DOM
+            for(var prop in scores) {
+                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
+            }
+        }).fail(function(err) {
+            alert("Error: " + JSON.stringify(err));
+        });
+    });
+</script>
+
+  			    <p> or take a selfie</p>
+  		      </div>
+         </div>
+  	 
+<!--right block contains 2 div-->
+  	     <div class = "right-block">
+<!--the following div contains a preview of your picture-->
+  		      <div class ="preview">
+  				  <p><img src="example.jpg"></p>
+  		      </div>
+<!--the following div contains a button-->
+  		      <div class ="button-block">
+  			    <p><button class="button"><span>Hover </span></button></a>
+            </p>
+  		      </div>
+  	     </div>
+      </form>
+
+</body>

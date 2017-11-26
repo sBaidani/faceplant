@@ -1,0 +1,109 @@
+/*this is main.css*/
+body{
+	background-color: #dfe3ee;	
+	font-family: Tahoma;	
+
+}
+
+.header{
+	color: #FFFFFF;
+	font-family: Tahoma;
+}
+
+h2{
+	color: #3b5998;
+}
+img {
+    width: 30%;
+    height: auto;
+
+}
+form{
+	background-color: none;
+	text-align: center;
+
+}
+
+/*Left Block*/
+
+div.left-block{
+	background-color: white;
+	float: left;
+	padding: 0 100px 0 0;
+
+}
+
+input{
+	background-color: #DCDCDC;
+	color: #808080;
+}
+
+/*upload and drag an image*/
+
+div.box{
+	background-color: blue;	
+
+}
+
+/*Take a selfie!*/
+div.embedded-camera{
+	background-color: #FF7F50;
+
+}
+
+/*Right Block*/
+
+div.right-block{
+   background-color: none;
+   float:left;
+   padding: 0 300px 0 0;
+
+}
+
+div.preview{
+	background-color: #FFFFFF;
+}
+div.button-block{
+	background-color: #FFFFFF;
+
+}
+ /* Hover Buttun*/
+.button {
+  border-radius: 4px;
+  background-color: #3b5998;
+  border: none;
+  color: #FFFFFF;
+  text-align: center;
+  font-size: 28px;
+  padding: 20px;
+  width: 200px;
+  transition: all 0.5s;
+  cursor: pointer;
+  margin: 5px;
+}
+
+.button span {
+  cursor: pointer;
+  display: inline-block;
+  position: relative;
+  transition: 0.5s;
+}
+
+.button span:after {
+  content: '\00bb';
+  position: absolute;
+  opacity: 0;
+  top: 0;
+  right: -20px;
+  transition: 0.5s;
+}
+
+.button:hover span {
+  padding-right: 25px;
+}
+
+.button:hover span:after {
+  opacity: 1;
+  right: 0;
+}
+
