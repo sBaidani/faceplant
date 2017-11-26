@@ -26,12 +26,18 @@ h1{
 	margin: 0 auto;
 }
 
-.intro, h2 {
+
+ h2 {
 	color: #1d2c4c;
 	text-align: center;
 	padding: 0 5% 0 5%;
 }
 
+h3{
+	color: #000;
+	text-align: center;
+	padding:0 5% 0 5%;
+}
 
 img {
     width: 30%;
@@ -119,4 +125,3 @@ div.button-block{
   opacity: 1;
   right: 0;
 }
-
