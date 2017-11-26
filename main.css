@@ -4,13 +4,19 @@ body{
 	font-family: Tahoma;	
 
 }
+h1{
+	font-size: 2em;
+	color: #FFFFFF;
+	margin-top: -0.01pt;
+	margin-left: 40pt;
+}
 
 .header {
-  height:20px;
+  height:30pt;
   width: 100%;
-  margin-top:40px;
+  margin-top:none;
   background: #3b5998;
-  padding: 25px 0;
+  padding: 15pt 0;
 }
 
 .sticky {
@@ -19,12 +25,12 @@ body{
   margin-top:0;
 }
 
-div#content {
+/*form#content {
  height:1600px;   
 }
-
+*/
 h2{
-	color: #3b5998;
+	color: #000;
 }
 img {
     width: 30%;
@@ -119,3 +125,4 @@ div.button-block{
   opacity: 1;
   right: 0;
 }
+
