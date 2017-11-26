@@ -12,28 +12,44 @@
     </head>
 </html>
 <body>
+    <div id="fb-root"></div>
+          <script>(function(d, s, id) {
+            var js, fjs = d.getElementsByTagName(s)[0];
+            if (d.getElementById(id)) return;
+            js = d.createElement(s); js.id = id;
+            js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11';
+            fjs.parentNode.insertBefore(js, fjs);
+           }(document, 'script', 'facebook-jssdk'));</script>
     <div class="header"><h1>faceplant</h1></div>
 <!--the following form tag contains logo and paragraph-->
         <img src="logo-faceplant.jpg" class="bean">
         <h2 >Scan me like one of your french girls</h2>
         <h3 class="intro"> Faceplant detects your emotions and shares it with people in your life</h3>
-          <p class="description" align="justify"> Start now!</p>
-       </div>
+          <p class="description" align="justify"> On this site you will be able to use the new Cognitive... Start now!</p>
+    </div>
 <!--the following form tag contains two blocks: left block and right block-->
       <form align="center" class="content">
+         <!--This is the left block-->
          <div class="left-block">
             <p> Select and upload image &nbsp &nbsp<button onclick="document.querySelector('input').click()" class="upload">Upload</button>
             <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
-            </div>
          </div>
+        
+         <!--this is the right block-->
          <div class = "right-block">
             <div class ="preview">
-             <img src="example.jpg">
+                <img src="example.jpg">
             </div>
+            
             <div class ="button-block">
-             <b><p><button class="button"><span>plant</span></button></p></b>
-             </p>
+              <b><p><button class="button"><span>plant</span></button></p></b>
+                 </p>
             </div>
+            
+            <!--this is the facebook like and share button-->
+            <div class="fb-like" data-href="https://scanmelikeoneofyourfrenchgilrs.tech" data-layout="standard" data-action="like" data-size="small" data-show-faces="true" data-share="true"></div>
+            <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fscanmelikeoneofyourfrenchgilrs.tech&width=450&layout=standard&action=like&size=small&show_faces=true&share=true&height=80&appId" width="450" height="80" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
+            
          </div>
       </form>
 </body>
