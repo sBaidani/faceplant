@@ -18,6 +18,7 @@
 <script type="text/javascript">
     var links = ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
                     "http://www.poleznoe.ru/large/201203/7946.jpg"]
+    var datapoints = [];
     $(function() {
         var params = {
             // Request parameters
@@ -39,8 +40,11 @@
         })
         .done(function(data) {
             console.log(data);
-            emotions = data[0].faceAttributes.emotion
-            datapoints = data[0].faceLandmarks
+            emotions = data[0].faceAttributes.emotion;
+            datapoints[0] = data[0].faceRectangle.left;
+            datapoints[1] = data[0].faceRectangle.top;
+            datapoints[2] = data[0].faceRectangle.width;
+            datapoints[3] = data[0].faceRectangle.height;
             document.getElementById("left").innerHTML = "<img src=\"" + links[0] + "\">"
             document.getElementById("right").innerHTML = "<img src=\"" + links[1] + "\">"
         })
@@ -51,6 +55,18 @@
         // console.log(faceAttributes);
         // console.log(faceRectangle);
     });
+    </script>
+    <script type=text/javascript>
+    
+    jQuery(function($)){
+    
+        $('#right').Jcrop();
+            setSelect: [datapoints[0], datapoints[1], datapoints[2], datapoints[3]],
+            canSelect: false,
+            canResize: false,
+            canDrag: false,
+            
+    };
 </script>
 </body>
 </html>
