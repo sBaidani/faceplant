@@ -2,29 +2,31 @@
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Faceplant</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Faceplant</title>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--icon on the tab-->
+           <link rel="icon" type="image/png" href="favicon.ico">
 <!--link to main.css-->
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <script type="text/javascript" src="faceplant.js"></script>
+           <link rel="stylesheet" type="text/css" href="main.css">
+           <script type="text/javascript" src="faceplant.js"></script>
     </head>
 </html> 
 <body>
-  <div class="header"><h1>faceplant</h1></div>
+    <div class="header"><h1>faceplant</h1></div>
 <!--the following form tag contains logo and paragraph-->
-  	   <div class="logo" id ="content">
-          <p align="center"><img src="logo-faceplant.jpg"></p>
-  		    <h2 align ="justify" >Scan me like one of your french girls</h2>
-  		    <p align="justify"> this site does bla bla bla  </p>
+  	    <div class="logo" id ="content">
+           <p align="center"><img src="logo-faceplant.jpg"></p>
+  		     <h2 align ="justify" >Scan me like one of your french girls</h2>
+  		   <p align="justify"> this site does bla bla bla  </p>
   		</div>
 <!--the following form tag contains two blocks: left block and right block-->
       <form align="center" class="content">
 <!--left block contains 2 divs-->
   	     <div class="left-block">
             <!--this div allows you to chose or drag and drop an image-->
-  		      <div class = "ddd">
-            <input type="file" id="myFile">  
-            </div>
+  		      <div class = "ddd"> Select and upload image &nbsp &nbsp<button onclick="document.querySelector('input').click()">Upload</button></div>
+            <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
+            
       
             <!--this div allows you to take a selfie-->
   		      <div class ="camera">
