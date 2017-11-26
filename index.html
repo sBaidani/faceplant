@@ -28,10 +28,13 @@
 <body>
 
 <script type="text/javascript">
+var scores1;
+var scoresList1;
+var scores2;
+var scoresList2;
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
             //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
@@ -40,7 +43,6 @@
             beforeSend: function(xhrObj){
                 // Request headers, also supports "application/octet-stream"
                 xhrObj.setRequestHeader("Content-Type","application/json");
-
                 // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
             },
@@ -51,29 +53,25 @@
             // Get face rectangle dimensions
             var faceRectangle = data[0].faceRectangle;
             var faceRectangleList = $('#faceRectangle');
-
             // Append to DOM
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-
             // Get emotion confidence scores
-            var scores = data[0].scores;
-            var scoresList = $('#scores');
-
+            scores1 = data[0].scores;
+            var scoresList1 = $('#scores');
             // Append to DOM
-            for(var prop in scores) {
-                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
+            for(var prop in scores1) {
+                scoresList1.append("<li> " + prop + ": " + scores1[prop] + "</li>")
             }
+
         }).fail(function(err) {
             alert("Error: " + JSON.stringify(err));
         });
     });
-
     $(function() {
         // No query string parameters for this API call.
         var params = { };
-
         $.ajax({
             // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
             //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
@@ -82,7 +80,6 @@
             beforeSend: function(xhrObj){
                 // Request headers, also supports "application/octet-stream"
                 xhrObj.setRequestHeader("Content-Type","application/json");
-
                 // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
                 xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
             },
@@ -93,26 +90,22 @@
             // Get face rectangle dimensions
             var faceRectangle = data[0].faceRectangle;
             var faceRectangleList = $('#faceRectangle2');
-
             // Append to DOM
             for (var prop in faceRectangle) {
                 faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
             }
-
             // Get emotion confidence scores
-            var scores = data[0].scores;
-            var scoresList = $('#scores2');
-
+            var scores2 = data[0].scores;
+            var scoresList2 = $('#scores2');
             // Append to DOM
-            for(var prop in scores) {
-                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
+            for(var prop in scores2) {
+                scoresList2.append("<li> " + prop + ": " + scores2[prop] + "</li>")
             }
+
         }).fail(function(err) {
             alert("Error: " + JSON.stringify(err));
         });
     });
 </script>
 </body>
-</html> 
-
-
+</html>
