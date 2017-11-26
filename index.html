@@ -1,118 +1,55 @@
 <!DOCTYPE html>
 <html>
 <head>
-    <title>JSSample</title>
+    <title>Faceplant</title>
     <script src="http://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js"></script>
     <script src="emotion.js"></script>
+    <script src="http://jcrop-cdn.tapmodo.com/v0.9.12/js/jquery.Jcrop.min.js"></script>
+    <link rel="stylesheet" href="http://jcrop-cdn.tapmodo.com/v0.9.12/css/jquery.Jcrop.css" type="text/css" />
+    <link rel="stylesheet" href="main.css" type="text/css" />
 </head>
 
-<h2>Face Rectangle</h2>
-<ul id="faceRectangle">
-<!-- Will populate list with response content -->
-</ul>
+<div id="left"></div>
 
-<h2>Emotions</h2>
-<ul id="scores">
-<!-- Will populate list with response content -->
-</ul>
-
-<h2>Face Rectangle 2</h2>
-<ul id="faceRectangle2">
-<!-- Will populate list with response content -->
-</ul>
-
-<h2>Emotions 2</h2>
-<ul id="scores2">
-<!-- Will populate list with response content -->
-</ul>
-
-<p id="testPara"></p>
+<div id="right"></div>
 
 <body>
 
 <script type="text/javascript">
     var links = ["https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg",
                     "http://www.poleznoe.ru/large/201203/7946.jpg"]
-var externalScores = new Array(2,8);
     $(function() {
-        // No query string parameters for this API call.
-        var params = { };
+        var params = {
+            // Request parameters
+            "returnFaceId": "true",
+            "returnFaceLandmarks": "true",
+            "returnFaceAttributes": "headPose,emotion",
+        };
+        
         $.ajax({
-            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
-            //   URL below with "westcentralus".
-            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
+            url: "https://northeurope.api.cognitive.microsoft.com/face/v1.0/detect?" + $.param(params),
             beforeSend: function(xhrObj){
-                // Request headers, also supports "application/octet-stream"
+                // Request headers
                 xhrObj.setRequestHeader("Content-Type","application/json");
-                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
+                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","c4a1b7187b0848b48872ba48ee008340");
             },
             type: "POST",
             // Request body
             data: '{"url": "' + links[0] + '"}',
-        }).done(function(data) {
-            // Get face rectangle dimensions
-            var faceRectangle = data[0].faceRectangle;
-            var faceRectangleList = $('#faceRectangle');
-            // Append to DOM
-            for (var prop in faceRectangle) {
-                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
-            }
-            // Get emotion confidence scores
-            var scores = data[0].scores;
-            externalScores[0] = scores;
-            console.log(externalScores);
-            var scoresList = $('#scores');
-            // Append to DOM
-            for(var prop in scores) {
-                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
-            }
-
-        }).fail(function(err) {
+        })
+        .done(function(data) {
+            console.log(data);
+            emotions = data[0].faceAttributes.emotion
+            datapoints = data[0].faceLandmarks
+            document.getElementById("left").innerHTML = "<img src=\"" + links[0] + "\">"
+            document.getElementById("right").innerHTML = "<img src=\"" + links[1] + "\">"
+        })
+        .fail(function(err) {
             alert("Error: " + JSON.stringify(err));
         });
-    });
-    $(function() {
-        // No query string parameters for this API call.
-        var params = { };
-        $.ajax({
-            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
-            //   URL below with "westcentralus".
-            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers, also supports "application/octet-stream"
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
-            },
-            type: "POST",
-            // Request body
-            data: '{"url": "' + links[1] + '"}',
-        }).done(function(data) {
-            // Get face rectangle dimensions
-            var faceRectangle = data[0].faceRectangle;
-            var faceRectangleList = $('#faceRectangle2');
-            // Append to DOM
-            for (var prop in faceRectangle) {
-                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
-            }
-            // Get emotion confidence scores
-            var scores = data[0].scores;
-            externalScores[1] = scores;
-            var scoresList = $('#scores2');
-            // Append to DOM
-            for(var prop in scores) {
-                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
-            }
-            console.log(compareImages(externalScores[0], externalScores[1]));
-            // console.log(compareImages(externalScores[0], externalScores[1]));
-
-        }).fail(function(err) {
-            alert("Error: " + JSON.stringify(err));
-        }
-    );
+        // console.log(faceLandmarks);
+        // console.log(faceAttributes);
+        // console.log(faceRectangle);
     });
 </script>
 </body>

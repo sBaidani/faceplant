@@ -1,0 +1,15 @@
+#left
+{
+    float: left;
+    width: 48%;
+    height: 98%;
+    margin: 1%;
+}
+
+#right
+{
+    float: right;
+    width: 48%;
+    height: 98%;
+    margin: 1%;
+}
