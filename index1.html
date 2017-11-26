@@ -1,143 +1,56 @@
-<!--written by csi21-->
+<!--frontend written by csi21 @ Oxford University Hackathon 2017-->
+<!--made responsive by Nikolay Pavlinov-->
 <!DOCTYPE html>
 <html>
     <head>
-        <title>Faceplant</title>
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
+           <title>Faceplant</title>
+           <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<!--icon on the tab-->
+           <link rel="icon" type="image/png" href="favicon.ico">
 <!--link to main.css-->
-        <link rel="stylesheet" type="text/css" href="main.css">
-        <script type="text/javascript" src="faceplant.js"></script>
+           <link rel="stylesheet" type="text/css" href="main.css">
+           <script type="text/javascript" src="faceplant.js"></script>
     </head>
-</html> 
+</html>
 <body>
-  <div class="header">faceplant</div>
+    <div id="fb-root"></div>
+    <script>(function(d, s, id) {
+      var js, fjs = d.getElementsByTagName(s)[0];
+      if (d.getElementById(id)) return;
+      js = d.createElement(s); js.id = id;
+      js.src = 'https://connect.facebook.net/en_GB/sdk.js#xfbml=1&version=v2.11';
+      fjs.parentNode.insertBefore(js, fjs);
+    }(document, 'script', 'facebook-jssdk'));</script>
+    <div class="header"><h1>faceplant</h1></div>
 <!--the following form tag contains logo and paragraph-->
-  	   <div class="logo" id ="content">
-          <p align="center"><img src="logo-faceplant.jpg"></p>
-  		    <h2 align ="justify" >Scan me like one of your french girls</h2>
-  		    <p align="justify"> this site does bla bla bla  </p>
-  		</div>
+        <img src="logo-faceplant.jpg" class="bean">
+        <h2 >Scan me like one of your french girls</h2>
+        <h3 class="intro">Faceplant detects your emotions and shares them with people in your life. </h3>
+          <p class="description" align="justify"> The  physiognomy of your face will be scanned and depending on the emotion detected, it will be placed on a famous portrait.</p>
+    </div>
 <!--the following form tag contains two blocks: left block and right block-->
-      <form align="center">
-<!--left block contains 2 divs-->
-  	     <div class="left-block">
-<!--this div allows you to chose or drag and drop an image-->
-  		      <div>
-            <input type="file" id="myFile">  
-            </div>
-      
-<!--this div allows you to take a selfie-->
-  		      <div class ="camera">
-              <h2>Face Rectangle</h2>
-              <ul id="faceRectangle">
-<!-- Will populate list with response content -->
-              </ul>
-
-              <h2>Emotions</h2>
-              <ul id="scores">
-<!-- Will populate list with response content -->
-              </ul>
-
-              <h2>Face Rectangle 2</h2>
-              <ul id="faceRectangle2">
-<!-- Will populate list with response content -->
-              </ul>
-
-              <h2>Emotions 2</h2>
-              <ul id="scores2">
-<!-- Will populate list with response content -->
-              </ul>
-            <script type="text/javascript">
-    $(function() {
-        // No query string parameters for this API call.
-        var params = { };
-        $.ajax({
-            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
-            //   URL below with "westcentralus".
-            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers, also supports "application/octet-stream"
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
-            },
-            type: "POST",
-            // Request body
-            data: '{"url": "https://upload.wikimedia.org/wikipedia/commons/thumb/e/ec/Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg/687px-Mona_Lisa%2C_by_Leonardo_da_Vinci%2C_from_C2RMF_retouched.jpg"}',
-        }).done(function(data) {
-            // Get face rectangle dimensions
-            var faceRectangle = data[0].faceRectangle;
-            var faceRectangleList = $('#faceRectangle');
-            // Append to DOM
-            for (var prop in faceRectangle) {
-                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
-            }
-            // Get emotion confidence scores
-            var scores = data[0].scores;
-            var scoresList = $('#scores');
-            // Append to DOM
-            for(var prop in scores) {
-                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
-            }
-        }).fail(function(err) {
-            alert("Error: " + JSON.stringify(err));
-        });
-    });
-    $(function() {
-        // No query string parameters for this API call.
-        var params = { };
-        $.ajax({
-            // NOTE: You must use the same location in your REST call as you used to obtain your subscription keys.
-            //   For example, if you obtained your subscription keys from westcentralus, replace "westus" in the
-            //   URL below with "westcentralus".
-            url: "https://westus.api.cognitive.microsoft.com/emotion/v1.0/recognize?" + $.param(params),
-            beforeSend: function(xhrObj){
-                // Request headers, also supports "application/octet-stream"
-                xhrObj.setRequestHeader("Content-Type","application/json");
-                // NOTE: Replace the "Ocp-Apim-Subscription-Key" value with a valid subscription key.
-                xhrObj.setRequestHeader("Ocp-Apim-Subscription-Key","6f28d06ec75f4b088c6e4677b068534b");
-            },
-            type: "POST",
-            // Request body
-            data: '{"url": "http://www.poleznoe.ru/large/201203/7946.jpg"}',
-        }).done(function(data) {
-            // Get face rectangle dimensions
-            var faceRectangle = data[0].faceRectangle;
-            var faceRectangleList = $('#faceRectangle2');
-            // Append to DOM
-            for (var prop in faceRectangle) {
-                faceRectangleList.append("<li> " + prop + ": " + faceRectangle[prop] + "</li>");
-            }
-            // Get emotion confidence scores
-            var scores = data[0].scores;
-            var scoresList = $('#scores2');
-            // Append to DOM
-            for(var prop in scores) {
-                scoresList.append("<li> " + prop + ": " + scores[prop] + "</li>")
-            }
-        }).fail(function(err) {
-            alert("Error: " + JSON.stringify(err));
-        });
-    });
-</script>
-
-  			    <p> or take a selfie</p>
-  		      </div>
+      <form align="center" class="content">
+         <!--This is the left block-->
+         <div class="left-block">
+            <p> Select and upload image &nbsp &nbsp<button onclick="document.querySelector('input').click()" class="upload">Upload</button>
+            <input style="visibility: collapse; width: 0px;" type="file" onchange="upload(this.files[0])">
          </div>
-  	 
-<!--right block contains 2 div-->
-  	     <div class = "right-block">
-<!--the following div contains a preview of your picture-->
-  		      <div class ="preview">
-  				  <p><img src="example.jpg"></p>
-  		      </div>
-<!--the following div contains a button-->
-  		      <div class ="button-block">
-  			    <p><button class="button"><span>Hover </span></button></a>
-            </p>
-  		      </div>
-  	     </div>
+        
+         <!--this is the right block-->
+         <div class = "right-block">
+            <div class ="preview">
+                <img src="example.jpg">
+            </div>
+            
+            <div class ="button-block">
+              <b><p><button class="button"><span>plant</span></button></p></b>
+                 </p>
+            </div>
+            
+            <!--this is the facebook like and share button-->
+            <div class="fb-like" data-href="https://scanmelikeoneofyourfrenchgirls.tech" data-layout="standard" data-action="like" data-size="large" data-show-faces="true" data-share="true"></div>
+         </div>
+            <iframe src="https://www.facebook.com/plugins/like.php?href=https%3A%2F%2Fscanmelikeoneofyourfrenchgirls.tech&width=450&layout=standard&action=like&size=large&show_faces=true&share=true&height=80&appId" width="450" height="80" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowTransparency="true"></iframe>
       </form>
-
 </body>
+© 2017 GitHub, Inc.

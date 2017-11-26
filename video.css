@@ -1,0 +1,50 @@
+
+#carbonads {
+position: absolute;
+top: 0;
+right: 0;
+display: block;
+overflow: hidden;
+padding: 1.5em 1em;
+max-width: 230px;
+border: solid 1px hsl(0, 0%, 88%);
+background-color: hsl(0, 0%, 96%);
+text-align: center;
+font-size: 18px;
+line-height: 1.5;
+transition: all .2s ease-in-out;
+}
+
+#carbonads:hover {
+background-color: hsl(0, 0%, 93%);
+}
+
+#carbonads a {
+text-decoration: none;
+}
+
+#carbonads span {
+display: block;
+overflow: hidden;
+}
+
+.carbon-img img {
+display: block;
+margin: 0 auto 1em;
+}
+
+.carbon-text {
+display: block;
+margin-bottom: .5em;
+}
+
+.carbon-poweredby {
+display: block;
+font-size: 16px;
+}
+
+@media (max-width: 768px) {
+	#carbonads { display:none; }
+}
+
+	
