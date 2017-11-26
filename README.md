@@ -7,3 +7,7 @@ Here you can find Frontend (index1.html, main.css, Faceplant.js): https://github
 
 Here you can find My SQL Database (https://github.com/sBaidani/faceplant/tree/nickBranch)
 
+
+Team Members: Simona, Nikolay, Sadiq
+
+
