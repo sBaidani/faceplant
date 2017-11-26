@@ -1,44 +1,37 @@
 /*this is main.css*/
 body{
-	background-color: #dfe3ee;	
+	background-color: #dfe3ee;
 	font-family: Tahoma;
-	margin: 0;	
-
+	margin: 0;
+	height: auto;
 }
+
 h1{
 	font-size: 2em;
 	color: #FFFFFF;
-	margin-top: -0.01pt;
-	margin-left: 40pt;
+	margin: 0 0 10px 80px;
 }
 
 .header{
-  height:30pt;
+  height: 50px;
   width: 100%;
-  margin-top:none;
   background: #3b5998;
-  padding: 16pt 0;
+  padding: 15pt 0 15pt 0;
 }
 
-.sticky {
-  position: fixed;
-  top: 0;
-  margin-top:0;
+.bean {
+	display: block;
+	width: 500px;
+	height: auto;
+	margin: 0 auto;
 }
 
-/*form#content {
- height:1600px;   
-}
-*/
-h3.intro{
-	color: #000;
-	margin-left:40pt;
-}
-
-h2{
+.intro, h2 {
 	color: #1d2c4c;
-	margin-left: 40pt;
+	text-align: center;
+	padding: 0 5% 0 5%;
 }
+
 
 img {
     width: 30%;
@@ -46,26 +39,28 @@ img {
 
 }
 
-p.description{
-  
-  margin-left: 40pt;
+.description{
+  margin-left: 40px;
 }
 
 form{
 	background-color: none;
 	text-align: center;
-	margin-left: 40pt;
+	margin-left: 40px;
 
 }
 
 /*Left Block*/
 
-div.left-block{
+.left-block{
 	background-color: none;
 	float: left;
 	padding: 0 100px 0 0;
-	padding-right: 0;
+	display: inline-block;
+}
 
+.left-block p {
+	font-size: 1em;
 }
 
 input{
@@ -73,24 +68,9 @@ input{
 	color: #808080;
 }
 
-/*upload and drag an image*/
-div.ddd{
-	background-color: #a8a8a8;
-}
-div.camera{
-	background-color: none;	
-
-}
-
-/*or Take a selfie!*/
-/*Right Block*/
 
 div.right-block{
-   background-color: none;
-   float:right;
-   padding: 0;
-
-
+	 	display: inline-block;
 }
 
 div.preview{
@@ -106,13 +86,13 @@ div.button-block{
   background-color: #3b5998;
   border: none;
   color: #FFFFFF;
-  text-align: center;
   font-size: 1.5em;
   padding: 10px;
   width: 100px;
   transition: all 0.5s;
   cursor: pointer;
-  margin: 5px;
+	margin: 0 auto;
+	position: relative;
 }
 
 .button span {
